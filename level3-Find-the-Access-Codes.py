@@ -43,3 +43,14 @@ solution.solution([1, 1, 1])
 Output:
     1
 '''
+
+def solution(a):
+    result = 0
+    for i in range(1, len(a)-1):
+        before = a[:i]
+        after = a[i + 1:]
+        now = a[i]
+        muls = len(list(filter(lambda x: x % now == 0, after)))
+        divs = len(list(filter(lambda x: now % x == 0, before)))
+        result += muls * divs
+    return result
